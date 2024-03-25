@@ -89,17 +89,17 @@ class RocketDomain:
         pass
 
     def get_actions(self, cargos, rockets, places):
-        actions = []
+        actions = {}
         for cargo in cargos:
             for rocket in rockets:
                 for place in places:
-                    actions.append(self.LOAD('LOAD', [cargo, rocket, place]))
-                    actions.append(self.UNLOAD('UNLOAD', [cargo, rocket, place]))
+                    actions.add(self.LOAD('LOAD', [cargo, rocket, place]))
+                    actions.add(self.UNLOAD('UNLOAD', [cargo, rocket, place]))
         for rocket in rockets:
             for place1 in places:
                 for place2 in places:
                     if place1 != place2:
-                        actions.append(self.MOVE('MOVE', [rocket, place1, place2]))
+                        actions.add(self.MOVE('MOVE', [rocket, place1, place2]))
         return actions
 
     def are_independent(self, action1, action2):
