@@ -131,6 +131,8 @@ class RocketDomain:
         return dependencies
     
     def are_mutex_actions(self, action1, action2, mutex_propositions):
+        if action1 == action2:
+            return False
         if self.actions_dependencies[(action1, action2)]:
             return True
         for prop1 in action1.preconditions:
@@ -145,3 +147,21 @@ class RocketDomain:
                 if (action1, action2) not in mutex_actions:
                     return False
         return True
+
+    def get_mutex_actions(self, actions, mutex_propositions):
+        """
+        Returns a list of tuples of actions that are mutex.
+        :param actions: list of Action objects
+        :param mutex_propositions: list of tuples of Proposition objects
+        :return: list
+        """
+        return [(action1, action2) for action1 in actions for action2 in actions if self.are_mutex_actions(action1, action2, mutex_propositions)]
+
+    def get_mutex_propositions(self, propositions, mutex_actions):
+        """
+        Returns a list of tuples of propositions that are mutex.
+        :param propositions: list of Proposition objects
+        :param mutex_actions: list of tuples of Action objects
+        :return: list
+        """
+        return [(prop1, prop2) for prop1 in propositions for prop2 in propositions if self.are_mutex_propositions(prop1, prop2, mutex_actions)]
