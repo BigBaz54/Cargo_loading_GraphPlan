@@ -78,6 +78,8 @@ class RocketDomain:
             super().__init__(name, args)
             assert len(args) == 1
 
+            self.preconditions.add(args[0])
+
             self.positive_effects.add(args[0])
 
         def __str__(self):
