@@ -4,21 +4,33 @@ class Proposition:
         self.args = args
 
     def __str__(self):
-        return f'{self.args[0]} {self.name} {self.args[1] if len(self.args) > 1 else ""}'
+        return f'{self.args[0]} {self.name}{" " + self.args[1] if len(self.args) > 1 else ""}'
+    
+    def __repr__(self):
+        return self.__str__()
     
     def __eq__(self, other):
         return self.name == other.name and self.args == other.args
+    
+    def __hash__(self):
+        return hash(tuple(self.args))
 
 class Action:
     def __init__(self, name, args):
         self.name = name
         self.args = args
-        self.preconditions = {}
-        self.positive_effects = {}
-        self.negative_effects = {}
+        self.preconditions = set()
+        self.positive_effects = set()
+        self.negative_effects = set()
 
     def __eq__(self, other):
         return self.name == other.name and self.args == other.args
+    
+    def __hash__(self):
+        return hash(tuple(self.args))
+    
+    def __repr__(self):
+        return self.__str__()
 
 class RocketDomain:
     def __init__(self, r_fact):
@@ -71,7 +83,7 @@ class RocketDomain:
 
         def __str__(self):
             return f'{self.name} {self.args[0]} from {self.args[1]} at {self.args[2]}'
-        
+    
     class NOOP(Action):
         # No-op action that propagates a proposition to the next state
         def __init__(self, name, args):
@@ -84,12 +96,41 @@ class RocketDomain:
 
         def __str__(self):
             return f'{self.name} {self.args[0]}'
-        
+   
     def parse_r_fact(self, r_fact):
-        pass
+        with open(r_fact, 'r') as f:
+            lines = f.readlines()
+        cargos = []
+        rockets = []
+        places = []
+        init_propositions = []
+        goals = []
+
+        i = 1
+        while lines[i] != '\n':
+            l = lines[i].replace('(', '').replace(')', '').strip().split()
+            if l[1] == 'CARGO':
+                cargos.append(l[0])
+            elif l[1] == 'ROCKET':
+                rockets.append(l[0])
+            elif l[1] == 'PLACE':
+                places.append(l[0])
+            i += 1
+        i += 2
+        while lines[i] != '\n':
+            l = lines[i].replace('(', '').replace(')', '').strip().split()
+            init_propositions.append(Proposition(l[0], l[1:]))
+            i += 1
+        i += 2
+        while lines[i] != '\n':
+            l = lines[i].replace('(', '').replace(')', '').strip().split()
+            goals.append(Proposition(l[0], l[1:]))
+            i += 1
+        
+        return cargos, rockets, places, init_propositions, goals
 
     def get_actions(self, cargos, rockets, places):
-        actions = {}
+        actions = set()
         for cargo in cargos:
             for rocket in rockets:
                 for place in places:
@@ -101,7 +142,7 @@ class RocketDomain:
                     if place1 != place2:
                         actions.add(self.MOVE('MOVE', [rocket, place1, place2]))
         return actions
-
+    
     def are_independent(self, action1, action2):
         for n in action1.negative_effects:
             if n in action2.preconditions or n in action2.positive_effects:
@@ -120,3 +161,16 @@ class RocketDomain:
         """
         dependencies = {(action1, action2): (not self.are_independent(action1, action2)) for action1 in actions for action2 in actions}
         return dependencies
+
+
+if __name__ == '__main__':
+    r_fact = 'examples/r_fact2.txt'
+    domain = RocketDomain(r_fact)
+    print(f'Cargos:\n{domain.cargos}\n')
+    print(f'Rockets:\n{domain.rockets}\n')
+    print(f'Places:\n{domain.places}\n')
+    print(f'Initial propositions:\n{domain.init_propositions}\n')
+    print(f'Goals:\n{domain.goals}\n')
+    # print(f'\nActions:\n{domain.actions}\n\n')
+    print(f'Number of actions (excluding No-op): {len(domain.actions)}\n')
+    print(f'Dependency table size: {len(domain.actions_dependencies)}')
