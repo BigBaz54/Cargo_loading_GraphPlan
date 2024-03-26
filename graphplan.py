@@ -59,6 +59,7 @@ class GraphPlan:
         :param i: the layer index
         :return: a list of sets of Action objects (a layered plan) or None (if the goal is unreachable)
         """
+        # print('Extracting', goal, 'from layer', i)
         if i == 0:
             # A global plan has been found
             return []
@@ -68,13 +69,13 @@ class GraphPlan:
         layered_plan = self.gp_search(goal, set(), i)
         if layered_plan is not None:
             return layered_plan
-        # We reached an unreachable goal, add it to the nogood set
+        # We found an unreachable goal, add it to the nogood set
         self.nogood[i].add(frozenset(goal))
         return None
         
     def gp_search(self, goal, plan, i):
         """
-        Builds a layered plan to achieve the given goal.
+        Builds a plan for the given goal in the given layer.
         :param goal: a set of Proposition objects
         :param plan: a set of Action objects
         :param i: the layer index
@@ -85,13 +86,19 @@ class GraphPlan:
             next_preconditions = set()
             for action in plan:
                 next_preconditions.update(action.preconditions)
+            # print('Extracting', next_preconditions, 'from layer', i - 1)
             next_layered_plan = self.extract(next_preconditions, i - 1)
             if next_layered_plan is None:
                 return None
+            
+            # print('Plan for layer', i, ':', [plan])
+            # print('Next layered plan:', next_layered_plan)
             return next_layered_plan + [plan]
 
         # Or is it a for loop ?
         prop = goal.pop()
+        goal.add(prop)
+        # for prop in goal:
         providers = set()
         for action in self.layers[i].actions:
             if (action, prop) in self.layers[i].positive_effects_links:
@@ -106,8 +113,10 @@ class GraphPlan:
             new_plan = plan.copy()
             new_plan.add(action)
             new_goal = goal - action.positive_effects
-            if self.gp_search(new_goal, new_plan, i) is not None:
-                return [new_plan]
+            layered_plan = self.gp_search(new_goal, new_plan, i)
+            if layered_plan is not None:
+                # print('Found a plan for', prop, 'in layer', i, ':', new_plan)
+                return layered_plan
         return None
     
     def graphplan(self):
@@ -116,10 +125,12 @@ class GraphPlan:
         while self.continue_search(goal) and not self.fixed_point():
             i += 1
             self.expand()
+        # print('Stop to only expand the graph at layer', i)
         if self.continue_search(goal):
             # We stopped expanding the graph because we reached the fixed point and the goal is not yet achieved
             return None
         nogood_size = len(self.nogood[-1]) if self.fixed_point() else 0
+        # print('\nCurrent goal:', goal)
         layered_plan = self.extract(goal, i)
         while layered_plan is None:
             i += 1
@@ -244,10 +255,10 @@ class GraphPlan:
 
 
 if __name__ == "__main__":
-    r_fact = 'examples/r_fact2.txt'
+    r_fact = 'examples/r_fact3.txt'
     gp = GraphPlan(r_fact)
     plan = gp.graphplan()
-    print('Goal:')
+    print('\n\nGoal:')
     print(gp.rd.goal)
     print()
     print('Plan:')
