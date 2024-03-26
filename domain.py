@@ -103,8 +103,8 @@ class RocketDomain:
         cargos = []
         rockets = []
         places = []
-        init_propositions = []
-        goals = []
+        init_propositions = set()
+        goal = set()
 
         i = 1
         while lines[i] != '\n':
@@ -119,15 +119,15 @@ class RocketDomain:
         i += 2
         while lines[i] != '\n':
             l = lines[i].replace('(', '').replace(')', '').strip().split()
-            init_propositions.append(Proposition(l[0], l[1:]))
+            init_propositions.add(Proposition(l[0], l[1:]))
             i += 1
         i += 2
         while lines[i] != '\n':
             l = lines[i].replace('(', '').replace(')', '').strip().split()
-            goals.append(Proposition(l[0], l[1:]))
+            goal.add(Proposition(l[0], l[1:]))
             i += 1
         
-        return cargos, rockets, places, init_propositions, goals
+        return cargos, rockets, places, init_propositions, goal
 
     def get_actions(self, cargos, rockets, places):
         actions = set()
