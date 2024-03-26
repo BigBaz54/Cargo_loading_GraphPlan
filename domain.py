@@ -51,6 +51,7 @@ class RocketDomain:
             self.positive_effects.add(Proposition('at', [args[0], args[2]]))
 
             self.negative_effects.add(Proposition('at', [args[0], args[1]]))
+            self.negative_effects.add(Proposition('has-fuel', [args[0]]))
         
         def __str__(self):
             return f'{self.name} {self.args[0]} from {self.args[1]} to {self.args[2]}'
