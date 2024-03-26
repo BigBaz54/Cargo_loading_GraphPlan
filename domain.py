@@ -164,6 +164,7 @@ class RocketDomain:
 
 
 if __name__ == '__main__':
+    # Test pasring
     r_fact = 'examples/r_fact2.txt'
     domain = RocketDomain(r_fact)
     print(f'Cargos:\n{domain.cargos}\n')
@@ -174,3 +175,18 @@ if __name__ == '__main__':
     # print(f'\nActions:\n{domain.actions}\n\n')
     print(f'Number of actions (excluding No-op): {len(domain.actions)}\n')
     print(f'Dependency table size: {len(domain.actions_dependencies)}')
+
+    # Test sets of actions and propositions and operations on them
+    domain = RocketDomain('examples/r_fact2.txt')
+    prop1 = Proposition('at', ['c1', 'r1'])
+    prop2 = Proposition('at', ['c2', 'r2'])
+    prop3 = Proposition('at', ['c1', 'r2'])
+    prop4 = Proposition('in', ['c1', 'r1'])
+
+    props = {prop1, prop2, prop3, prop4}
+
+    print(Proposition('at', ['c1', 'r1']) in props)
+    props_copy = props.copy()
+    props_copy.update({Proposition('at', ['c1', 'r1'])})
+    print(props_copy == props)
+    print(props - {Proposition('at', ['c1', 'r1'])})
