@@ -35,7 +35,8 @@ class Action:
 class RocketDomain:
     def __init__(self, r_fact):
         self.cargos, self.rockets, self.places, self.init_propositions, self.goal = self.parse_r_fact(r_fact)
-        self.actions = self.get_actions(self.cargos, self.rockets, self.places)
+        self.propositions = self.get_propositions(self.cargos, self.rockets, self.places)
+        self.actions = self.get_actions(self.cargos, self.rockets, self.places, self.propositions)
         # actions_dependencies[(action1, action2)] = True if action1 and action2 are dependent, False otherwise
         self.actions_dependencies = self.get_actions_dependencies(self.actions)
 
@@ -128,9 +129,24 @@ class RocketDomain:
             i += 1
         
         return cargos, rockets, places, init_propositions, goal
+    
+    def get_propositions(self, cargos, rockets, places):
+        propositions = set()
+        for cargo in cargos:
+            for rocket in rockets:
+                propositions.add(Proposition('in', [cargo, rocket]))
+            for place in places:
+                propositions.add(Proposition('at', [cargo, place]))
+        for rocket in rockets:
+            propositions.add(Proposition('has-fuel', [rocket]))
+            for place in places:
+                propositions.add(Proposition('at', [rocket, place]))
+        return propositions
 
-    def get_actions(self, cargos, rockets, places):
+    def get_actions(self, cargos, rockets, places, propositions):
         actions = set()
+        for prop in propositions:
+            actions.add(self.NOOP('NOOP', [prop]))
         for cargo in cargos:
             for rocket in rockets:
                 for place in places:
