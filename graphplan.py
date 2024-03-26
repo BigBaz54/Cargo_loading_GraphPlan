@@ -38,7 +38,7 @@ class GraphPlan:
         new_layer.actions = self.get_next_actions(self.layers[-1].propositions, self.layers[-1].mutex_propositions)
         new_layer.mutex_actions = self.get_mutex_actions(new_layer.actions, self.layers[-1].mutex_propositions)
         new_layer.propositions = self.get_next_propositions(new_layer.actions)
-        new_layer.mutex_propositions = self.get_mutex_propositions(new_layer.propositions, new_layer.mutex_actions)
+        new_layer.mutex_propositions = self.get_mutex_propositions(new_layer.propositions, new_layer.actions, new_layer.mutex_actions)
         for action in new_layer.actions:
             for prop in action.preconditions:
                 if prop in self.layers[-1].propositions:
@@ -110,8 +110,9 @@ class GraphPlan:
                 return [new_plan]
         return None
     
-    def graphplan(self, goal):
+    def graphplan(self):
         i = 0
+        goal = self.rd.goal.copy()
         while self.continue_search(goal) and not self.fixed_point():
             i += 1
             self.expand()
@@ -177,11 +178,11 @@ class GraphPlan:
                     return True
         return False
 
-    def are_mutex_propositions(self, prop1, prop2, mutex_actions):
+    def are_mutex_propositions(self, prop1, prop2, actions, mutex_actions):
         if prop1 == prop2:
             return False
-        for action1 in self.get_producers(prop1, self.rd.actions):
-            for action2 in self.get_producers(prop2, self.rd.actions):
+        for action1 in self.get_producers(prop1, actions):
+            for action2 in self.get_producers(prop2, actions):
                 if {action1, action2} not in mutex_actions:
                     return False
         return True
@@ -195,14 +196,14 @@ class GraphPlan:
         """
         return {frozenset([action1, action2]) for action1 in actions for action2 in actions if self.are_mutex_actions(action1, action2, mutex_propositions)}
 
-    def get_mutex_propositions(self, propositions, mutex_actions):
+    def get_mutex_propositions(self, propositions, actions, mutex_actions):
         """
         Returns a set of frozen sets of propositions that are mutex.
         :param propositions: list of Proposition objects
         :param mutex_actions: list of tuples of Action objects
         :return: list
         """
-        return {frozenset([prop1, prop2]) for prop1 in propositions for prop2 in propositions if self.are_mutex_propositions(prop1, prop2, mutex_actions)}
+        return {frozenset([prop1, prop2]) for prop1 in propositions for prop2 in propositions if self.are_mutex_propositions(prop1, prop2, actions, mutex_actions)}
     
     def get_next_actions(self, previous_propositions, previous_mutex_propositions):
         """
@@ -245,5 +246,37 @@ class GraphPlan:
 if __name__ == "__main__":
     r_fact = 'examples/r_fact2.txt'
     gp = GraphPlan(r_fact)
-    plan = gp.graphplan(gp.rd.goal)
-    print(*plan)
+    plan = gp.graphplan()
+    print('Goal:')
+    print(gp.rd.goal)
+    print()
+    print('Plan:')
+    print(*plan, sep='\n')
+    print()
+    # print('Graph:')
+    # for i, layer in enumerate(gp.layers):
+    #     print(f'Layer {i}:')
+    #     print('Actions:')
+    #     print(*layer.actions, sep='\n')
+    #     print()
+    #     print('Propositions:')
+    #     print(*layer.propositions, sep='\n')
+    #     print()
+    #     print('Mutex actions:')
+    #     print(*layer.mutex_actions, sep='\n')
+    #     print()
+    #     print('Mutex propositions:')
+    #     print(*layer.mutex_propositions, sep='\n')
+    #     print()
+    #     print('Preconditions links:')
+    #     print(*layer.preconditions_links, sep='\n')
+    #     print()
+    #     print('Positive effects links:')
+    #     print(*layer.positive_effects_links, sep='\n')
+    #     print()
+    #     print('Negative effects links:')
+    #     print(*layer.negative_effects_links, sep='\n')
+    #     print()
+    #     print('No-good:')
+    #     print(gp.nogood[i])
+    #     print()
