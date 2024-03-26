@@ -34,7 +34,7 @@ class Action:
 
 class RocketDomain:
     def __init__(self, r_fact):
-        self.cargos, self.rockets, self.places, self.init_propositions, self.goals = self.parse_r_fact(r_fact)
+        self.cargos, self.rockets, self.places, self.init_propositions, self.goal = self.parse_r_fact(r_fact)
         self.actions = self.get_actions(self.cargos, self.rockets, self.places)
         # actions_dependencies[(action1, action2)] = True if action1 and action2 are dependent, False otherwise
         self.actions_dependencies = self.get_actions_dependencies(self.actions)
@@ -171,7 +171,7 @@ if __name__ == '__main__':
     print(f'Rockets:\n{domain.rockets}\n')
     print(f'Places:\n{domain.places}\n')
     print(f'Initial propositions:\n{domain.init_propositions}\n')
-    print(f'Goals:\n{domain.goals}\n')
+    print(f'Goals:\n{domain.goal}\n')
     # print(f'\nActions:\n{domain.actions}\n\n')
     print(f'Number of actions (excluding No-op): {len(domain.actions)}\n')
     print(f'Dependency table size: {len(domain.actions_dependencies)}')
