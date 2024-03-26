@@ -13,7 +13,7 @@ class Proposition:
         return self.name == other.name and self.args == other.args
     
     def __hash__(self):
-        return hash(tuple(self.args))
+        return hash(self.name) + hash(tuple(self.args))
 
 class Action:
     def __init__(self, name, args):
@@ -27,7 +27,7 @@ class Action:
         return self.name == other.name and self.args == other.args
     
     def __hash__(self):
-        return hash(tuple(self.args))
+        return hash(self.name) + hash(tuple(self.args))
     
     def __repr__(self):
         return self.__str__()
