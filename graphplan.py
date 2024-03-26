@@ -90,8 +90,9 @@ class GraphPlan:
             next_layered_plan = self.extract(next_preconditions, i - 1)
             if next_layered_plan is None:
                 return None
-            
-            # print('Plan for layer', i, ':', [plan])
+            print('Extracted goal from layer', i - 1, ': ', next_preconditions)
+            print('=' * 200)
+            print('Plan for layer', i, ':', [plan])
             # print('Next layered plan:', next_layered_plan)
             return next_layered_plan + [plan]
 
@@ -99,17 +100,14 @@ class GraphPlan:
         prop = goal.pop()
         goal.add(prop)
         # for prop in goal:
-        providers = set()
-        for action in self.layers[i].actions:
-            if (action, prop) in self.layers[i].positive_effects_links:
-                for added_action in plan:
-                    if {action, added_action} in self.layers[i].mutex_actions:
-                        break
-                else:
-                    providers.add(action)
+        providers = self.get_providers(prop, self.layers[i].actions, self.layers[i].positive_effects_links, plan, self.layers[i].mutex_actions)
+        if i == 6:
+            print('Providers for', prop, 'in layer', i, ':', providers)
         if len(providers) == 0:
             return None
         for action in providers:
+            if i == 6:
+                print('Trying to add', action, 'to the plan for', prop, 'in layer', i)
             new_plan = plan.copy()
             new_plan.add(action)
             new_goal = goal - action.positive_effects
@@ -141,6 +139,7 @@ class GraphPlan:
                     # We reached the fixed point and the nogood set did not change
                     return None
                 nogood_size = len(self.nogood[-1])
+        print('Extracted goal from layer', i, ': ', goal)
         return layered_plan
 
     def fixed_point(self):
@@ -168,6 +167,30 @@ class GraphPlan:
                 if {prop1, prop2} in self.layers[-1].mutex_propositions:
                     return True
         return False
+
+    def get_providers(self, proposition, actions, positive_effects_links, current_plan, mutex_actions):
+        """
+        Returns a list of Action objects that can provide a given proposition.
+        The action must not be mutex with any action in the current plan and must have the given proposition as a positive effect.
+        The returned list is sorted to have the No-op actions first.
+        :param proposition: Proposition object
+        :param actions: set of Action objects
+        :param positive_effects_links: set of tuples of Action and Proposition objects
+        :param current_plan: set of Action objects
+        :param mutex_actions: set of frozen sets of Action objects
+        :return: list of Action objects
+        """
+        providers = set()
+        for action in actions:
+            if (action, proposition) in positive_effects_links:
+                for added_action in current_plan:
+                    if {action, added_action} in mutex_actions:
+                        break
+                else:
+                    providers.add(action)
+        providers = list(providers)
+        providers.sort(key=lambda action: action.name != 'NOOP')
+        return providers
 
     def get_producers(self, proposition, actions):
         """
@@ -224,9 +247,6 @@ class GraphPlan:
         :return: list
         """
         next_actions = set()
-        # Add the No-op actions first as a heuristic to favor them
-        for prop in previous_propositions:
-            next_actions.add(self.rd.NOOP('NOOP', [prop]))
         for action in self.rd.actions:
             for prop1 in action.preconditions:
                 if prop1 not in previous_propositions:
@@ -257,37 +277,12 @@ class GraphPlan:
 if __name__ == "__main__":
     r_fact = 'examples/r_fact3.txt'
     gp = GraphPlan(r_fact)
-    plan = gp.graphplan()
+    layered_plan = gp.graphplan()
     print('\n\nGoal:')
     print(gp.rd.goal)
     print()
-    print('Plan:')
-    print(*plan, sep='\n')
+    # print('Plan:')
+    # print(*layered_plan, sep='\n')
+    print('Plan (without NOOP):')
+    print(*[', '.join([str(action) for action in layer if action.name != 'NOOP']) for layer in layered_plan], sep='\n')
     print()
-    # print('Graph:')
-    # for i, layer in enumerate(gp.layers):
-    #     print(f'Layer {i}:')
-    #     print('Actions:')
-    #     print(*layer.actions, sep='\n')
-    #     print()
-    #     print('Propositions:')
-    #     print(*layer.propositions, sep='\n')
-    #     print()
-    #     print('Mutex actions:')
-    #     print(*layer.mutex_actions, sep='\n')
-    #     print()
-    #     print('Mutex propositions:')
-    #     print(*layer.mutex_propositions, sep='\n')
-    #     print()
-    #     print('Preconditions links:')
-    #     print(*layer.preconditions_links, sep='\n')
-    #     print()
-    #     print('Positive effects links:')
-    #     print(*layer.positive_effects_links, sep='\n')
-    #     print()
-    #     print('Negative effects links:')
-    #     print(*layer.negative_effects_links, sep='\n')
-    #     print()
-    #     print('No-good:')
-    #     print(gp.nogood[i])
-    #     print()
