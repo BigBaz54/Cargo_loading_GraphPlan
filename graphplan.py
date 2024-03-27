@@ -43,18 +43,19 @@ class GraphPlan:
 
         #### Trace ####
         self.trace += f'Expanding the graph, building layer {len(self.layers)}\n'
-        self.trace += f'Layer {len(self.layers)} actions:\n'
+        self.trace += f'\tLayer {len(self.layers)} actions:\n'
         for action in new_layer.actions:
-            self.trace += f'\t{action}\n'
-        self.trace += f'Layer {len(self.layers)} mutex actions:\n'
+            self.trace += f'\t\t{action}\n'
+        self.trace += f'\tLayer {len(self.layers)} mutex actions:\n'
         for ma1, ma2 in new_layer.mutex_actions:
-            self.trace += f'\t{ma1} and {ma2}\n'
-        self.trace += f'Layer {len(self.layers)} propositions:\n'
+            self.trace += f'\t\t{ma1} and {ma2}\n'
+        self.trace += f'\tLayer {len(self.layers)} propositions:\n'
         for prop in new_layer.propositions:
-            self.trace += f'\t{prop}\n'
-        self.trace += f'Layer {len(self.layers)} mutex propositions:\n'
+            self.trace += f'\t\t{prop}\n'
+        self.trace += f'\tLayer {len(self.layers)} mutex propositions:\n'
         for mp1, mp2 in new_layer.mutex_propositions:
-            self.trace += f'\t{mp1} and {mp2}\n'
+            self.trace += f'\t\t{mp1} and {mp2}\n'
+        self.trace += '\n################################################################################\n\n'
         ##############
 
         for action in new_layer.actions:
@@ -77,13 +78,17 @@ class GraphPlan:
         :param i: the layer index
         :return: a list of sets of Action objects (a layered plan) or None (if the goal is unreachable)
         """
+        self.trace += '\n################################################################################\n\n'
         self.trace += f'Trying to extract the following goal from layer {i}:\n'
         for prop in goal:
             self.trace += f'\t{prop}\n'
+        self.trace += '\n'
         if i == 0:
             # A global plan has been found
-            self.trace += 'The intermediate goal for layer 0 corresponds to the initial preconditions, the built layered plan is valid !\n'
-            self.trace += 'We can now concatenate the plans for each layer and end the search.\n\n'
+            self.trace += '\n#####################################################################################################################\n'
+            self.trace += '### The intermediate goal for layer 0 corresponds to the initial preconditions, the built layered plan is valid ! ###\n'
+            self.trace += '######################## We can now concatenate the plans for each layer and end the search. ########################\n'
+            self.trace += '#####################################################################################################################\n\n'
             return []
         if goal in self.nogood[i]:
             # This goal was already proven to be unreachable
@@ -117,9 +122,10 @@ class GraphPlan:
             self.trace += f'The valid intermediate goal that was extracted from layer {i - 1} is:\n'
             for prop in next_preconditions:
                 self.trace += f'\t{prop}\n'
-            self.trace += f'\nThe valid corresponding plan for layer {i} is :\n'
+            self.trace += f'\nThe valid corresponding plan for layer {i} is:\n'
             for action in plan:
                 self.trace += f'\t{action}\n'
+            self.trace += '\n################################################################################\n\n'
             ##############
             
             return next_layered_plan + [plan]
@@ -144,10 +150,15 @@ class GraphPlan:
     def graphplan(self):
         i = 0
         goal = self.rd.goal.copy()
+        self.trace += '#################################################################################\n'
+        self.trace += '### Expanding the planning graph until the goal is included in the last layer ###\n'
+        self.trace += '#################################################################################\n\n'
         while self.continue_search(goal) and not self.fixed_point():
             i += 1
             self.expand()
-        self.trace += f'A valid plan might exist from layer {i}, we can try to extract the goal from this layer.\n\n'
+        self.trace += '##############################################################################################\n'
+        self.trace += f'### A valid plan might exist from layer {i}, we can try to extract the goal from this layer. ###\n'
+        self.trace += '##############################################################################################\n'
         if self.continue_search(goal):
             # We stopped expanding the graph because we reached the fixed point and the goal is not yet achieved
             return None
@@ -163,13 +174,15 @@ class GraphPlan:
                     # We reached the fixed point and the nogood set did not change
                     return None
                 nogood_size = len(self.nogood[-1])
-        self.trace += f'The extracted goal from layer {i} is {goal}\n'
-        self.trace += 'This actually is the global goal. The plans for each layer have been concatenated.\n'
+        self.trace += f'The extracted goal from layer {i} is {goal}\n\n'
+        self.trace += '##########################################################################################\n'
+        self.trace += '### This actually is the global goal. The plans for each layer have been concatenated. ###\n'
+        self.trace += '##########################################################################################\n\n'
         self.trace += 'We can return the layered plan:\n'
         for layer in layered_plan:
             for action in layer:
                 if action.name != 'NOOP':
-                    self.trace += f'{action}\n'
+                    self.trace += f'\t{action}\n'
         return layered_plan
 
     def fixed_point(self):
