@@ -78,7 +78,7 @@ class GraphPlan:
         :param i: the layer index
         :return: a list of sets of Action objects (a layered plan) or None (if the goal is unreachable)
         """
-        self.trace += '\n################################################################################\n\n'
+        self.trace += '################################################################################\n\n'
         self.trace += f'Trying to extract the following goal from layer {i}:\n'
         for prop in goal:
             self.trace += f'\t{prop}\n'
@@ -100,7 +100,7 @@ class GraphPlan:
         self.nogood[i].add(frozenset(goal))
         return None
         
-    def gp_search(self, goal, plan, i):
+    def gp_search(self, goal, plan, i, pad=0):
         """
         Builds a plan for the given goal in the given layer.
         :param goal: a set of Proposition objects
@@ -133,16 +133,26 @@ class GraphPlan:
         # Or is it a for loop ?
         prop = goal.pop()
         goal.add(prop)
+        self.trace += '\t' * pad
         self.trace += f'\t\tLooking for an action that can provide {prop} in layer {i}\n'
         providers = self.get_providers(prop, self.layers[i].actions, self.layers[i].positive_effects_links, plan, self.layers[i].mutex_actions)
+        self.trace += '\t' * pad
+        self.trace += f'\t\t\tProviders for {prop} in layer {i}:\n'
+        for action in providers:
+            self.trace += '\t' * pad
+            self.trace += f'\t\t\t\t{action}\n'
         if len(providers) == 0:
+            self.trace += '\t' * pad
+            self.trace += '\t\t\t\tNo provider found, choosing another provider for the previous proposition\n'
             return None
         for action in providers:
-            self.trace += f'\t\t\tTrying to add {action} to the plan\n'
+            self.trace += '\n'
+            self.trace += '\t' * pad
+            self.trace += f'\t\t\tTrying to add {action} to the plan\n\n'
             new_plan = plan.copy()
             new_plan.add(action)
             new_goal = goal - action.positive_effects
-            layered_plan = self.gp_search(new_goal, new_plan, i)
+            layered_plan = self.gp_search(new_goal, new_plan, i, pad + 1)
             if layered_plan is not None:
                 return layered_plan
         return None
