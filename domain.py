@@ -4,7 +4,7 @@ class Proposition:
         self.args = args
 
     def __str__(self):
-        return f'{self.args[0]} {self.name}{" " + self.args[1] if len(self.args) > 1 else ""}'
+        return f'<{self.args[0]} {self.name}{" " + self.args[1] if len(self.args) > 1 else ""}>'
     
     def __repr__(self):
         return self.__str__()
@@ -34,6 +34,7 @@ class Action:
 
 class RocketDomain:
     def __init__(self, r_fact):
+        self.r_fact = r_fact
         self.cargos, self.rockets, self.places, self.init_propositions, self.goal = self.parse_r_fact(r_fact)
         self.propositions = self.get_propositions(self.cargos, self.rockets, self.places)
         self.actions = self.get_actions(self.cargos, self.rockets, self.places, self.propositions)
@@ -54,7 +55,7 @@ class RocketDomain:
             self.negative_effects.add(Proposition('has-fuel', [args[0]]))
         
         def __str__(self):
-            return f'{self.name} {self.args[0]} from {self.args[1]} to {self.args[2]}'
+            return f'[{self.name} {self.args[0]} from {self.args[1]} to {self.args[2]}]'
 
     class LOAD(Action):
         def __init__(self, name, args):
@@ -69,7 +70,7 @@ class RocketDomain:
             self.negative_effects.add(Proposition('at', [args[0], args[2]]))
 
         def __str__(self):
-            return f'{self.name} {self.args[0]} in {self.args[1]} at {self.args[2]}'
+            return f'[{self.name} {self.args[0]} in {self.args[1]} at {self.args[2]}]'
 
     class UNLOAD(Action):
         def __init__(self, name, args):
@@ -84,7 +85,7 @@ class RocketDomain:
             self.negative_effects.add(Proposition('in', [args[0], args[1]]))
 
         def __str__(self):
-            return f'{self.name} {self.args[0]} from {self.args[1]} at {self.args[2]}'
+            return f'[{self.name} {self.args[0]} from {self.args[1]} at {self.args[2]}]'
     
     class NOOP(Action):
         # No-op action that propagates a proposition to the next state
@@ -97,7 +98,7 @@ class RocketDomain:
             self.positive_effects.add(args[0])
 
         def __str__(self):
-            return f'{self.name} {self.args[0]}'
+            return f'[{self.name} {self.args[0]}]'
    
     def parse_r_fact(self, r_fact):
         with open(r_fact, 'r') as f:
