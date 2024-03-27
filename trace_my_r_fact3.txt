@@ -1,0 +1,1034 @@
+#################################################################################
+### Expanding the planning graph until the goal is included in the last layer ###
+#################################################################################
+
+Expanding the graph, building layer 1
+	Layer 1 actions:
+		[LOAD lv in r1 at Nancy]
+		[NOOP <matz at Nancy>]
+		[LOAD kacim in r2 at Nancy]
+		[MOVE r2 from Nancy to Paris]
+		[NOOP <r2 has-fuel>]
+		[NOOP <kacim at Nancy>]
+		[LOAD matz in r1 at Nancy]
+		[NOOP <r1 has-fuel>]
+		[MOVE r1 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy]
+		[MOVE r2 from Nancy to Lyon]
+		[NOOP <r2 at Nancy>]
+		[LOAD matz in r2 at Nancy]
+		[LOAD lv in r2 at Nancy]
+		[NOOP <lv at Nancy>]
+		[MOVE r1 from Nancy to Lyon]
+		[NOOP <r1 at Nancy>]
+	Layer 1 mutex actions:
+		[LOAD kacim in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <matz at Nancy>] and [LOAD matz in r1 at Nancy]
+		[LOAD lv in r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[LOAD matz in r2 at Nancy] and [LOAD matz in r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [NOOP <kacim at Nancy>]
+		[NOOP <r1 has-fuel>] and [MOVE r1 from Nancy to Paris]
+		[MOVE r1 from Nancy to Lyon] and [LOAD matz in r1 at Nancy]
+		[LOAD lv in r1 at Nancy] and [LOAD lv in r2 at Nancy]
+		[MOVE r1 from Nancy to Paris] and [LOAD kacim in r1 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [NOOP <r2 at Nancy>]
+		[LOAD lv in r2 at Nancy] and [NOOP <lv at Nancy>]
+		[MOVE r2 from Nancy to Lyon] and [NOOP <r2 at Nancy>]
+		[LOAD lv in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[LOAD lv in r1 at Nancy] and [NOOP <lv at Nancy>]
+		[MOVE r2 from Nancy to Paris] and [MOVE r2 from Nancy to Lyon]
+		[LOAD lv in r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[LOAD kacim in r2 at Nancy] and [LOAD kacim in r1 at Nancy]
+		[LOAD lv in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[MOVE r1 from Nancy to Paris] and [NOOP <r1 at Nancy>]
+		[MOVE r2 from Nancy to Lyon] and [NOOP <r2 has-fuel>]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz at Nancy>]
+		[LOAD matz in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy] and [NOOP <kacim at Nancy>]
+		[MOVE r1 from Nancy to Paris] and [LOAD matz in r1 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [NOOP <r2 has-fuel>]
+		[MOVE r1 from Nancy to Lyon] and [LOAD kacim in r1 at Nancy]
+		[LOAD matz in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[MOVE r1 from Nancy to Paris] and [MOVE r1 from Nancy to Lyon]
+		[LOAD kacim in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r1 has-fuel>] and [MOVE r1 from Nancy to Lyon]
+		[MOVE r1 from Nancy to Lyon] and [NOOP <r1 at Nancy>]
+	Layer 1 propositions:
+		<r2 at Paris>
+		<matz at Nancy>
+		<lv in r1>
+		<r2 at Lyon>
+		<matz in r2>
+		<kacim in r1>
+		<r2 at Nancy>
+		<r1 at Lyon>
+		<r2 has-fuel>
+		<kacim at Nancy>
+		<matz in r1>
+		<r1 at Paris>
+		<r1 at Nancy>
+		<lv at Nancy>
+		<lv in r2>
+		<kacim in r2>
+		<r1 has-fuel>
+	Layer 1 mutex propositions:
+		<r1 at Lyon> and <kacim in r1>
+		<r1 at Lyon> and <lv in r1>
+		<r2 at Paris> and <matz in r2>
+		<lv at Nancy> and <lv in r1>
+		<r1 at Nancy> and <r1 at Paris>
+		<r1 at Paris> and <matz in r1>
+		<kacim in r2> and <kacim in r1>
+		<r2 at Paris> and <r2 has-fuel>
+		<r1 at Paris> and <r1 at Lyon>
+		<kacim in r2> and <kacim at Nancy>
+		<r2 at Paris> and <kacim in r2>
+		<r1 has-fuel> and <r1 at Lyon>
+		<r1 at Paris> and <kacim in r1>
+		<matz in r2> and <matz in r1>
+		<matz in r1> and <r1 at Lyon>
+		<lv in r2> and <lv in r1>
+		<r2 at Paris> and <r2 at Lyon>
+		<r1 at Paris> and <lv in r1>
+		<r1 at Nancy> and <r1 at Lyon>
+		<r2 at Lyon> and <kacim in r2>
+		<kacim at Nancy> and <kacim in r1>
+		<matz in r2> and <matz at Nancy>
+		<r2 has-fuel> and <r2 at Lyon>
+		<r1 has-fuel> and <r1 at Paris>
+		<matz in r2> and <r2 at Lyon>
+		<lv at Nancy> and <lv in r2>
+		<r2 at Paris> and <lv in r2>
+		<r2 at Paris> and <r2 at Nancy>
+		<matz at Nancy> and <matz in r1>
+		<r2 at Lyon> and <r2 at Nancy>
+		<r2 at Lyon> and <lv in r2>
+
+################################################################################
+
+Expanding the graph, building layer 2
+	Layer 2 actions:
+		[NOOP <lv in r2>]
+		[UNLOAD matz from r2 at Nancy]
+		[NOOP <r2 at Paris>]
+		[NOOP <kacim in r1>]
+		[LOAD matz in r2 at Nancy]
+		[NOOP <lv at Nancy>]
+		[UNLOAD lv from r2 at Nancy]
+		[NOOP <r1 at Nancy>]
+		[NOOP <matz at Nancy>]
+		[NOOP <r1 at Paris>]
+		[NOOP <r2 has-fuel>]
+		[NOOP <kacim at Nancy>]
+		[MOVE r2 from Nancy to Paris]
+		[NOOP <matz in r1>]
+		[MOVE r2 from Nancy to Lyon]
+		[UNLOAD kacim from r2 at Nancy]
+		[LOAD lv in r2 at Nancy]
+		[UNLOAD matz from r1 at Nancy]
+		[NOOP <matz in r2>]
+		[NOOP <kacim in r2>]
+		[LOAD kacim in r2 at Nancy]
+		[LOAD matz in r1 at Nancy]
+		[UNLOAD lv from r1 at Nancy]
+		[NOOP <r2 at Nancy>]
+		[UNLOAD kacim from r1 at Nancy]
+		[NOOP <r1 at Lyon>]
+		[LOAD lv in r1 at Nancy]
+		[NOOP <r2 at Lyon>]
+		[NOOP <r1 has-fuel>]
+		[MOVE r1 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy]
+		[NOOP <lv in r1>]
+		[MOVE r1 from Nancy to Lyon]
+	Layer 2 mutex actions:
+		[LOAD kacim in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <lv in r2>] and [NOOP <lv at Nancy>]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <kacim at Nancy>]
+		[NOOP <r2 at Paris>] and [NOOP <r2 at Nancy>]
+		[NOOP <kacim in r1>] and [NOOP <r1 at Lyon>]
+		[LOAD kacim in r1 at Nancy] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD matz from r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r1 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <r1 at Lyon>]
+		[NOOP <lv at Nancy>] and [NOOP <lv in r1>]
+		[NOOP <matz in r2>] and [NOOP <r2 at Lyon>]
+		[LOAD kacim in r2 at Nancy] and [NOOP <kacim in r2>]
+		[MOVE r2 from Nancy to Paris] and [NOOP <r2 at Nancy>]
+		[LOAD lv in r1 at Nancy] and [NOOP <lv in r1>]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz in r2>]
+		[LOAD lv in r2 at Nancy] and [NOOP <lv in r1>]
+		[NOOP <matz in r1>] and [LOAD matz in r1 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <r1 at Paris>]
+		[LOAD lv in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[UNLOAD kacim from r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[NOOP <lv in r2>] and [NOOP <r2 at Paris>]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz at Nancy>]
+		[NOOP <r1 at Lyon>] and [NOOP <r1 at Paris>]
+		[NOOP <matz in r2>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <matz in r1>] and [NOOP <matz at Nancy>]
+		[NOOP <kacim in r2>] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <r1 has-fuel>] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <matz in r2>] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <r1 at Paris>] and [NOOP <r1 at Nancy>]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <matz at Nancy>] and [LOAD matz in r1 at Nancy]
+		[NOOP <kacim at Nancy>] and [UNLOAD kacim from r2 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <r1 at Lyon>] and [LOAD matz in r1 at Nancy]
+		[LOAD matz in r2 at Nancy] and [LOAD matz in r1 at Nancy]
+		[NOOP <r1 at Lyon>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <r2 at Paris>] and [LOAD matz in r2 at Nancy]
+		[NOOP <kacim in r1>] and [LOAD kacim in r2 at Nancy]
+		[NOOP <lv in r2>] and [NOOP <r2 at Lyon>]
+		[NOOP <r1 at Lyon>] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <r1 has-fuel>] and [MOVE r1 from Nancy to Paris]
+		[NOOP <lv in r2>] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <r2 at Paris>] and [NOOP <r2 has-fuel>]
+		[NOOP <lv in r2>] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r1 at Nancy]
+		[LOAD lv in r1 at Nancy] and [NOOP <r1 at Paris>]
+		[UNLOAD matz from r1 at Nancy] and [NOOP <r1 at Paris>]
+		[MOVE r2 from Nancy to Lyon] and [NOOP <r2 at Nancy>]
+		[MOVE r1 from Nancy to Paris] and [NOOP <r1 at Paris>]
+		[UNLOAD matz from r1 at Nancy] and [LOAD matz in r1 at Nancy]
+		[NOOP <kacim in r1>] and [NOOP <r1 at Paris>]
+		[LOAD kacim in r1 at Nancy] and [NOOP <r1 at Paris>]
+		[NOOP <r1 at Lyon>] and [UNLOAD lv from r1 at Nancy]
+		[MOVE r1 from Nancy to Paris] and [NOOP <r1 at Nancy>]
+		[NOOP <kacim in r2>] and [NOOP <r2 at Lyon>]
+		[NOOP <r2 at Paris>] and [NOOP <matz in r2>]
+		[LOAD matz in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r1 at Lyon>] and [MOVE r1 from Nancy to Paris]
+		[NOOP <r2 at Paris>] and [MOVE r2 from Nancy to Lyon]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz in r1>]
+		[UNLOAD matz from r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <matz in r2>] and [LOAD matz in r1 at Nancy]
+		[MOVE r1 from Nancy to Lyon] and [NOOP <r1 at Paris>]
+		[NOOP <matz at Nancy>] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <r2 at Paris>] and [NOOP <kacim in r2>]
+		[NOOP <r1 at Lyon>] and [NOOP <r1 has-fuel>]
+		[MOVE r1 from Nancy to Paris] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <matz in r2>] and [NOOP <matz in r1>]
+		[NOOP <matz at Nancy>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [MOVE r2 from Nancy to Lyon]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <r2 at Lyon>] and [NOOP <r2 at Nancy>]
+		[UNLOAD matz from r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[NOOP <r2 at Paris>] and [NOOP <r2 at Lyon>]
+		[LOAD lv in r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <r1 has-fuel>] and [NOOP <r1 at Paris>]
+		[NOOP <kacim in r2>] and [NOOP <kacim at Nancy>]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <lv in r2>] and [NOOP <lv in r1>]
+		[NOOP <matz in r1>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <matz in r2>] and [NOOP <matz at Nancy>]
+		[NOOP <r2 at Paris>] and [UNLOAD matz from r2 at Nancy]
+		[LOAD lv in r2 at Nancy] and [LOAD lv in r1 at Nancy]
+		[NOOP <kacim in r2>] and [LOAD kacim in r1 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [LOAD matz in r1 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <r2 at Lyon>] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [LOAD kacim in r2 at Nancy]
+		[NOOP <lv in r1>] and [UNLOAD lv from r1 at Nancy]
+		[LOAD lv in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <lv at Nancy>] and [LOAD lv in r1 at Nancy]
+		[NOOP <kacim in r1>] and [NOOP <kacim in r2>]
+		[NOOP <kacim in r1>] and [LOAD kacim in r1 at Nancy]
+		[LOAD lv in r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[MOVE r1 from Nancy to Lyon] and [UNLOAD lv from r1 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [NOOP <r2 has-fuel>]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r2 at Nancy]
+		[MOVE r1 from Nancy to Lyon] and [LOAD kacim in r1 at Nancy]
+		[LOAD matz in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <r2 at Paris>] and [MOVE r2 from Nancy to Paris]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD kacim from r2 at Nancy]
+		[LOAD lv in r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[LOAD kacim in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r2 at Paris>] and [UNLOAD lv from r2 at Nancy]
+		[MOVE r1 from Nancy to Lyon] and [NOOP <r1 at Nancy>]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <r1 at Lyon>] and [LOAD kacim in r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r2 at Paris>] and [LOAD lv in r2 at Nancy]
+		[NOOP <lv in r2>] and [LOAD lv in r2 at Nancy]
+		[NOOP <lv in r1>] and [NOOP <r1 at Paris>]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD lv from r1 at Nancy] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <r1 at Lyon>] and [NOOP <r1 at Nancy>]
+		[LOAD kacim in r2 at Nancy] and [NOOP <kacim at Nancy>]
+		[NOOP <matz in r1>] and [NOOP <r1 at Lyon>]
+		[MOVE r1 from Nancy to Lyon] and [LOAD matz in r1 at Nancy]
+		[MOVE r1 from Nancy to Paris] and [LOAD kacim in r1 at Nancy]
+		[NOOP <lv in r1>] and [NOOP <r1 at Lyon>]
+		[LOAD matz in r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[NOOP <lv at Nancy>] and [LOAD lv in r2 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <kacim in r2>]
+		[NOOP <kacim in r1>] and [NOOP <kacim at Nancy>]
+		[UNLOAD kacim from r1 at Nancy] and [LOAD kacim in r1 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [MOVE r2 from Nancy to Lyon]
+		[LOAD lv in r1 at Nancy] and [NOOP <r1 at Lyon>]
+		[LOAD kacim in r2 at Nancy] and [LOAD kacim in r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <matz in r1>] and [UNLOAD matz from r2 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r1 at Paris>] and [LOAD matz in r1 at Nancy]
+		[UNLOAD matz from r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy] and [NOOP <kacim at Nancy>]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[MOVE r1 from Nancy to Paris] and [LOAD matz in r1 at Nancy]
+		[NOOP <r2 at Paris>] and [UNLOAD kacim from r2 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [NOOP <r2 has-fuel>]
+		[NOOP <matz in r1>] and [NOOP <r1 at Paris>]
+		[NOOP <r1 at Paris>] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [NOOP <r2 has-fuel>]
+		[NOOP <lv in r1>] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <r2 at Paris>] and [LOAD kacim in r2 at Nancy]
+		[NOOP <lv in r2>] and [LOAD lv in r1 at Nancy]
+		[MOVE r1 from Nancy to Paris] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [UNLOAD kacim from r2 at Nancy]
+	Layer 2 propositions:
+		<r2 at Paris>
+		<kacim in r2>
+		<lv in r1>
+		<r1 has-fuel>
+		<matz in r2>
+		<matz in r1>
+		<kacim in r1>
+		<r2 at Lyon>
+		<r2 at Nancy>
+		<r1 at Lyon>
+		<r1 at Nancy>
+		<r2 has-fuel>
+		<kacim at Nancy>
+		<lv at Nancy>
+		<lv in r2>
+		<matz at Nancy>
+		<r1 at Paris>
+	Layer 2 mutex propositions:
+		<lv at Nancy> and <lv in r1>
+		<r1 at Nancy> and <r1 at Paris>
+		<kacim in r2> and <kacim in r1>
+		<r2 at Paris> and <r2 has-fuel>
+		<kacim at Nancy> and <kacim in r2>
+		<r1 at Paris> and <r1 at Lyon>
+		<r1 at Lyon> and <r1 has-fuel>
+		<matz in r2> and <matz in r1>
+		<lv in r2> and <lv in r1>
+		<r2 at Paris> and <r2 at Lyon>
+		<r1 at Nancy> and <r1 at Lyon>
+		<kacim at Nancy> and <kacim in r1>
+		<matz in r2> and <matz at Nancy>
+		<r2 has-fuel> and <r2 at Lyon>
+		<r1 at Paris> and <r1 has-fuel>
+		<lv at Nancy> and <lv in r2>
+		<r2 at Paris> and <r2 at Nancy>
+		<matz at Nancy> and <matz in r1>
+		<r2 at Lyon> and <r2 at Nancy>
+
+################################################################################
+
+Expanding the graph, building layer 3
+	Layer 3 actions:
+		[NOOP <lv in r2>]
+		[UNLOAD matz from r2 at Nancy]
+		[NOOP <r2 at Paris>]
+		[UNLOAD lv from r2 at Paris]
+		[NOOP <kacim in r1>]
+		[LOAD matz in r2 at Nancy]
+		[UNLOAD lv from r2 at Lyon]
+		[UNLOAD kacim from r2 at Paris]
+		[NOOP <lv at Nancy>]
+		[UNLOAD lv from r2 at Nancy]
+		[NOOP <r1 at Nancy>]
+		[UNLOAD matz from r1 at Paris]
+		[NOOP <matz at Nancy>]
+		[NOOP <r1 at Paris>]
+		[NOOP <r2 has-fuel>]
+		[NOOP <kacim at Nancy>]
+		[UNLOAD kacim from r2 at Lyon]
+		[MOVE r2 from Nancy to Paris]
+		[NOOP <matz in r1>]
+		[UNLOAD matz from r1 at Lyon]
+		[MOVE r2 from Nancy to Lyon]
+		[UNLOAD kacim from r2 at Nancy]
+		[LOAD lv in r2 at Nancy]
+		[UNLOAD matz from r1 at Nancy]
+		[NOOP <matz in r2>]
+		[NOOP <kacim in r2>]
+		[UNLOAD lv from r1 at Paris]
+		[LOAD kacim in r2 at Nancy]
+		[UNLOAD lv from r1 at Lyon]
+		[LOAD matz in r1 at Nancy]
+		[UNLOAD kacim from r1 at Paris]
+		[UNLOAD lv from r1 at Nancy]
+		[NOOP <r2 at Nancy>]
+		[UNLOAD kacim from r1 at Lyon]
+		[UNLOAD kacim from r1 at Nancy]
+		[NOOP <r1 at Lyon>]
+		[LOAD lv in r1 at Nancy]
+		[NOOP <r2 at Lyon>]
+		[NOOP <r1 has-fuel>]
+		[MOVE r1 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy]
+		[UNLOAD matz from r2 at Paris]
+		[NOOP <lv in r1>]
+		[UNLOAD matz from r2 at Lyon]
+		[MOVE r1 from Nancy to Lyon]
+	Layer 3 mutex actions:
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <kacim at Nancy>]
+		[UNLOAD matz from r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[UNLOAD lv from r1 at Paris] and [UNLOAD lv from r1 at Nancy]
+		[UNLOAD lv from r2 at Lyon] and [UNLOAD lv from r1 at Nancy]
+		[LOAD lv in r1 at Nancy] and [UNLOAD matz from r1 at Lyon]
+		[NOOP <lv in r1>] and [UNLOAD lv from r1 at Paris]
+		[NOOP <lv in r1>] and [UNLOAD lv from r2 at Lyon]
+		[UNLOAD kacim from r1 at Paris] and [LOAD matz in r1 at Nancy]
+		[UNLOAD lv from r1 at Paris] and [LOAD kacim in r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD kacim from r1 at Paris]
+		[UNLOAD lv from r1 at Paris] and [UNLOAD lv from r2 at Lyon]
+		[NOOP <r2 at Paris>] and [UNLOAD lv from r2 at Lyon]
+		[NOOP <kacim in r2>] and [UNLOAD kacim from r1 at Paris]
+		[NOOP <lv in r2>] and [UNLOAD lv from r1 at Paris]
+		[NOOP <matz in r1>] and [UNLOAD matz from r1 at Lyon]
+		[NOOP <r1 at Paris>] and [NOOP <r1 at Nancy>]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD matz from r1 at Nancy]
+		[UNLOAD kacim from r1 at Lyon] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD lv from r2 at Lyon] and [NOOP <r2 has-fuel>]
+		[UNLOAD matz from r1 at Lyon] and [UNLOAD matz from r2 at Nancy]
+		[UNLOAD lv from r1 at Paris] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD lv from r2 at Lyon] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <matz in r2>] and [UNLOAD matz from r2 at Paris]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD lv from r2 at Lyon]
+		[LOAD lv in r1 at Nancy] and [NOOP <r1 at Paris>]
+		[UNLOAD lv from r1 at Lyon] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <matz in r1>] and [UNLOAD matz from r2 at Lyon]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r1 at Lyon]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD lv from r1 at Paris]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD matz from r2 at Paris]
+		[UNLOAD matz from r1 at Lyon] and [MOVE r1 from Nancy to Paris]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD lv from r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD lv from r2 at Lyon]
+		[LOAD matz in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[UNLOAD kacim from r2 at Paris] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD lv from r1 at Lyon] and [NOOP <r1 at Nancy>]
+		[UNLOAD matz from r1 at Nancy] and [UNLOAD lv from r1 at Paris]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <matz at Nancy>] and [UNLOAD matz from r2 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [NOOP <r1 has-fuel>]
+		[NOOP <matz in r2>] and [NOOP <matz in r1>]
+		[NOOP <r2 at Lyon>] and [NOOP <r2 at Nancy>]
+		[UNLOAD matz from r2 at Lyon] and [NOOP <r2 at Nancy>]
+		[UNLOAD matz from r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[NOOP <matz in r1>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <r2 at Paris>] and [UNLOAD matz from r2 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [NOOP <r1 at Lyon>]
+		[UNLOAD lv from r1 at Lyon] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD matz from r2 at Lyon]
+		[UNLOAD matz from r2 at Paris] and [NOOP <matz in r1>]
+		[MOVE r2 from Nancy to Lyon] and [NOOP <r2 has-fuel>]
+		[UNLOAD lv from r1 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[UNLOAD matz from r1 at Lyon] and [LOAD matz in r1 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD lv from r1 at Lyon]
+		[MOVE r1 from Nancy to Lyon] and [LOAD kacim in r1 at Nancy]
+		[UNLOAD matz from r2 at Paris] and [NOOP <r2 at Nancy>]
+		[UNLOAD matz from r1 at Paris] and [NOOP <matz in r2>]
+		[LOAD matz in r2 at Nancy] and [UNLOAD lv from r2 at Lyon]
+		[MOVE r1 from Nancy to Lyon] and [NOOP <r1 at Nancy>]
+		[UNLOAD matz from r1 at Lyon] and [UNLOAD lv from r1 at Paris]
+		[UNLOAD matz from r1 at Paris] and [LOAD kacim in r1 at Nancy]
+		[UNLOAD kacim from r1 at Paris] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD matz from r1 at Paris] and [NOOP <r1 at Nancy>]
+		[MOVE r1 from Nancy to Paris] and [LOAD kacim in r1 at Nancy]
+		[UNLOAD lv from r2 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <kacim in r2>]
+		[NOOP <kacim in r1>] and [NOOP <kacim at Nancy>]
+		[UNLOAD lv from r2 at Lyon] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [LOAD lv in r1 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [MOVE r1 from Nancy to Lyon]
+		[UNLOAD lv from r1 at Lyon] and [LOAD matz in r1 at Nancy]
+		[LOAD matz in r2 at Nancy] and [UNLOAD lv from r2 at Paris]
+		[NOOP <matz in r1>] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <r1 at Lyon>] and [UNLOAD lv from r1 at Paris]
+		[UNLOAD matz from r1 at Nancy] and [UNLOAD kacim from r1 at Paris]
+		[LOAD kacim in r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[UNLOAD matz from r2 at Lyon] and [NOOP <r2 has-fuel>]
+		[NOOP <r1 at Paris>] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [NOOP <r2 has-fuel>]
+		[NOOP <r2 at Paris>] and [LOAD kacim in r2 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD lv from r2 at Paris]
+		[UNLOAD kacim from r1 at Paris] and [UNLOAD kacim from r2 at Paris]
+		[LOAD matz in r1 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[LOAD kacim in r1 at Nancy] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD matz from r2 at Paris] and [NOOP <r2 at Lyon>]
+		[NOOP <lv in r2>] and [UNLOAD lv from r2 at Paris]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <r1 at Lyon>]
+		[LOAD kacim in r2 at Nancy] and [NOOP <kacim in r2>]
+		[UNLOAD matz from r2 at Lyon] and [UNLOAD lv from r2 at Paris]
+		[NOOP <r2 at Lyon>] and [UNLOAD lv from r2 at Paris]
+		[UNLOAD lv from r2 at Lyon] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD kacim from r1 at Lyon] and [NOOP <r1 at Nancy>]
+		[NOOP <r2 at Paris>] and [UNLOAD matz from r2 at Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [NOOP <r1 at Paris>]
+		[NOOP <r1 has-fuel>] and [UNLOAD kacim from r1 at Paris]
+		[LOAD kacim in r1 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r1 at Paris]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r1 at Paris]
+		[MOVE r1 from Nancy to Paris] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD lv from r1 at Paris]
+		[NOOP <lv in r2>] and [UNLOAD lv from r2 at Lyon]
+		[NOOP <kacim in r2>] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <r1 has-fuel>] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <r1 has-fuel>] and [UNLOAD lv from r1 at Paris]
+		[NOOP <r1 at Lyon>] and [LOAD matz in r1 at Nancy]
+		[NOOP <r1 at Lyon>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <r2 at Paris>] and [LOAD matz in r2 at Nancy]
+		[NOOP <r2 at Paris>] and [NOOP <r2 has-fuel>]
+		[NOOP <kacim in r2>] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <lv in r2>] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD matz from r1 at Nancy] and [NOOP <r1 at Paris>]
+		[MOVE r2 from Nancy to Lyon] and [NOOP <r2 at Nancy>]
+		[UNLOAD lv from r2 at Paris] and [NOOP <r2 at Nancy>]
+		[UNLOAD lv from r2 at Lyon] and [MOVE r2 from Nancy to Lyon]
+		[UNLOAD matz from r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[UNLOAD matz from r2 at Nancy] and [UNLOAD lv from r2 at Paris]
+		[MOVE r1 from Nancy to Lyon] and [NOOP <r1 at Paris>]
+		[UNLOAD kacim from r1 at Paris] and [MOVE r1 from Nancy to Lyon]
+		[UNLOAD matz from r2 at Paris] and [MOVE r2 from Nancy to Lyon]
+		[LOAD kacim in r1 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[NOOP <lv in r2>] and [UNLOAD lv from r1 at Lyon]
+		[LOAD lv in r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <lv in r2>] and [NOOP <lv in r1>]
+		[NOOP <r1 has-fuel>] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD matz from r1 at Lyon] and [LOAD kacim in r1 at Nancy]
+		[NOOP <lv in r1>] and [UNLOAD lv from r1 at Nancy]
+		[UNLOAD matz from r1 at Lyon] and [NOOP <matz at Nancy>]
+		[UNLOAD lv from r2 at Lyon] and [NOOP <r2 at Nancy>]
+		[UNLOAD matz from r2 at Nancy] and [UNLOAD lv from r2 at Lyon]
+		[LOAD lv in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <lv at Nancy>] and [LOAD lv in r1 at Nancy]
+		[UNLOAD matz from r1 at Lyon] and [UNLOAD kacim from r1 at Paris]
+		[NOOP <kacim in r1>] and [LOAD kacim in r1 at Nancy]
+		[LOAD lv in r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[UNLOAD matz from r2 at Lyon] and [LOAD matz in r1 at Nancy]
+		[NOOP <r2 at Paris>] and [MOVE r2 from Nancy to Paris]
+		[UNLOAD matz from r1 at Nancy] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD matz from r2 at Lyon] and [UNLOAD matz from r1 at Nancy]
+		[UNLOAD kacim from r2 at Paris] and [UNLOAD kacim from r1 at Lyon]
+		[UNLOAD matz from r2 at Lyon] and [LOAD kacim in r2 at Nancy]
+		[NOOP <r2 at Paris>] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD kacim from r1 at Lyon]
+		[UNLOAD matz from r2 at Lyon] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r1 at Lyon>] and [LOAD kacim in r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [MOVE r2 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <lv in r2>] and [LOAD lv in r2 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <r1 at Lyon>] and [NOOP <r1 at Nancy>]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r2 at Lyon]
+		[MOVE r1 from Nancy to Lyon] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [LOAD kacim in r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD kacim from r1 at Paris] and [UNLOAD kacim from r1 at Lyon]
+		[LOAD lv in r1 at Nancy] and [NOOP <r1 at Lyon>]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD kacim from r1 at Paris]
+		[LOAD lv in r2 at Nancy] and [UNLOAD matz from r2 at Lyon]
+		[NOOP <r2 at Paris>] and [UNLOAD kacim from r2 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [NOOP <r2 has-fuel>]
+		[NOOP <kacim in r2>] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <kacim at Nancy>] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD lv from r1 at Paris] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <r2 at Lyon>] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD kacim from r1 at Paris] and [LOAD kacim in r1 at Nancy]
+		[LOAD kacim in r1 at Nancy] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <r2 at Lyon>] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD matz from r2 at Paris] and [MOVE r2 from Nancy to Paris]
+		[UNLOAD matz from r1 at Paris] and [MOVE r1 from Nancy to Paris]
+		[UNLOAD matz from r1 at Lyon] and [UNLOAD lv from r1 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <r2 has-fuel>] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD kacim from r1 at Nancy]
+		[NOOP <matz in r1>] and [LOAD matz in r1 at Nancy]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD kacim from r2 at Lyon]
+		[LOAD lv in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[NOOP <r1 at Lyon>] and [UNLOAD kacim from r1 at Paris]
+		[NOOP <r2 has-fuel>] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <matz in r1>] and [NOOP <matz at Nancy>]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r2 at Lyon]
+		[NOOP <matz in r2>] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <kacim at Nancy>] and [UNLOAD kacim from r2 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD kacim from r1 at Paris] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD lv from r1 at Lyon]
+		[LOAD matz in r2 at Nancy] and [LOAD matz in r1 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <kacim in r1>] and [LOAD kacim in r2 at Nancy]
+		[NOOP <matz in r2>] and [UNLOAD matz from r1 at Lyon]
+		[NOOP <r1 at Lyon>] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <r1 has-fuel>] and [MOVE r1 from Nancy to Paris]
+		[NOOP <lv in r2>] and [UNLOAD lv from r1 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [UNLOAD kacim from r2 at Paris]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD lv from r2 at Paris] and [MOVE r2 from Nancy to Lyon]
+		[UNLOAD kacim from r2 at Lyon] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <r2 at Paris>] and [UNLOAD kacim from r2 at Lyon]
+		[MOVE r1 from Nancy to Paris] and [NOOP <r1 at Nancy>]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r2 at Paris]
+		[NOOP <r2 at Paris>] and [MOVE r2 from Nancy to Lyon]
+		[LOAD lv in r2 at Nancy] and [UNLOAD matz from r2 at Paris]
+		[NOOP <matz at Nancy>] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <r2 at Lyon>] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD lv from r2 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD lv from r1 at Paris] and [NOOP <r1 at Nancy>]
+		[NOOP <kacim in r2>] and [NOOP <kacim at Nancy>]
+		[UNLOAD matz from r1 at Lyon] and [MOVE r1 from Nancy to Lyon]
+		[NOOP <matz in r2>] and [NOOP <matz at Nancy>]
+		[NOOP <kacim in r2>] and [LOAD kacim in r1 at Nancy]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD lv from r2 at Lyon]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD kacim from r1 at Nancy] and [LOAD kacim in r2 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD matz from r2 at Lyon] and [NOOP <matz at Nancy>]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <kacim in r1>] and [NOOP <kacim in r2>]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r2 at Lyon]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD matz from r2 at Lyon]
+		[MOVE r2 from Nancy to Paris] and [UNLOAD lv from r2 at Lyon]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD matz from r2 at Nancy]
+		[MOVE r1 from Nancy to Lyon] and [UNLOAD lv from r1 at Nancy]
+		[NOOP <r1 at Paris>] and [UNLOAD kacim from r1 at Lyon]
+		[LOAD matz in r2 at Nancy] and [MOVE r2 from Nancy to Lyon]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD kacim from r2 at Nancy]
+		[LOAD lv in r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[LOAD kacim in r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[LOAD lv in r1 at Nancy] and [UNLOAD kacim from r1 at Paris]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD matz from r1 at Lyon]
+		[NOOP <r2 at Paris>] and [LOAD lv in r2 at Nancy]
+		[NOOP <lv in r1>] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD matz from r2 at Lyon] and [UNLOAD lv from r2 at Nancy]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r2 at Paris]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[UNLOAD kacim from r1 at Paris] and [NOOP <r1 at Nancy>]
+		[NOOP <lv at Nancy>] and [LOAD lv in r2 at Nancy]
+		[UNLOAD lv from r1 at Paris] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD lv from r2 at Lyon] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD matz from r1 at Lyon] and [NOOP <r1 has-fuel>]
+		[UNLOAD lv from r2 at Paris] and [MOVE r2 from Nancy to Paris]
+		[LOAD lv in r2 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD kacim from r1 at Nancy] and [UNLOAD matz from r1 at Lyon]
+		[LOAD kacim in r2 at Nancy] and [LOAD kacim in r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD matz from r2 at Lyon] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <r1 at Paris>] and [LOAD matz in r1 at Nancy]
+		[UNLOAD matz from r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[LOAD matz in r2 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[MOVE r1 from Nancy to Paris] and [LOAD matz in r1 at Nancy]
+		[NOOP <lv in r1>] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <lv in r2>] and [LOAD lv in r1 at Nancy]
+		[UNLOAD lv from r1 at Paris] and [LOAD matz in r1 at Nancy]
+		[NOOP <lv in r2>] and [NOOP <lv at Nancy>]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <r2 at Paris>] and [NOOP <r2 at Nancy>]
+		[UNLOAD matz from r1 at Lyon] and [UNLOAD matz from r2 at Lyon]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r1 at Nancy]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r1 at Lyon]
+		[UNLOAD matz from r2 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <lv at Nancy>] and [NOOP <lv in r1>]
+		[UNLOAD lv from r2 at Paris] and [UNLOAD lv from r1 at Nancy]
+		[UNLOAD kacim from r2 at Lyon] and [UNLOAD kacim from r2 at Nancy]
+		[MOVE r2 from Nancy to Paris] and [NOOP <r2 at Nancy>]
+		[UNLOAD kacim from r1 at Paris] and [NOOP <kacim at Nancy>]
+		[LOAD lv in r1 at Nancy] and [NOOP <lv in r1>]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz in r2>]
+		[LOAD lv in r2 at Nancy] and [NOOP <lv in r1>]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r1 at Lyon]
+		[NOOP <r2 at Nancy>] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD kacim from r1 at Nancy] and [MOVE r1 from Nancy to Paris]
+		[UNLOAD matz from r1 at Lyon] and [NOOP <r1 at Nancy>]
+		[UNLOAD lv from r1 at Paris] and [MOVE r1 from Nancy to Lyon]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz at Nancy>]
+		[MOVE r1 from Nancy to Lyon] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r1 at Paris]
+		[LOAD lv in r1 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <r1 at Lyon>] and [NOOP <r1 at Paris>]
+		[NOOP <matz in r2>] and [UNLOAD matz from r1 at Nancy]
+		[UNLOAD matz from r2 at Paris] and [NOOP <r2 has-fuel>]
+		[NOOP <matz at Nancy>] and [LOAD matz in r1 at Nancy]
+		[UNLOAD lv from r2 at Paris] and [NOOP <r2 has-fuel>]
+		[UNLOAD matz from r2 at Lyon] and [MOVE r2 from Nancy to Lyon]
+		[NOOP <matz in r2>] and [UNLOAD matz from r2 at Lyon]
+		[UNLOAD lv from r1 at Paris] and [MOVE r1 from Nancy to Paris]
+		[UNLOAD kacim from r2 at Lyon] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r1 at Nancy]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r2 at Lyon]
+		[MOVE r1 from Nancy to Paris] and [NOOP <r1 at Paris>]
+		[UNLOAD matz from r1 at Nancy] and [LOAD matz in r1 at Nancy]
+		[NOOP <r2 at Nancy>] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD matz from r1 at Paris] and [NOOP <matz in r1>]
+		[LOAD kacim in r1 at Nancy] and [NOOP <r1 at Paris>]
+		[NOOP <r1 at Lyon>] and [UNLOAD lv from r1 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[NOOP <r1 at Lyon>] and [MOVE r1 from Nancy to Paris]
+		[LOAD matz in r2 at Nancy] and [NOOP <matz in r1>]
+		[NOOP <matz in r2>] and [LOAD matz in r1 at Nancy]
+		[UNLOAD matz from r2 at Paris] and [LOAD kacim in r2 at Nancy]
+		[NOOP <r1 at Lyon>] and [NOOP <r1 has-fuel>]
+		[MOVE r1 from Nancy to Paris] and [MOVE r1 from Nancy to Lyon]
+		[UNLOAD matz from r2 at Paris] and [LOAD matz in r1 at Nancy]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r2 at Nancy]
+		[NOOP <r2 at Paris>] and [NOOP <r2 at Lyon>]
+		[NOOP <r1 has-fuel>] and [NOOP <r1 at Paris>]
+		[NOOP <kacim at Nancy>] and [UNLOAD kacim from r1 at Lyon]
+		[LOAD lv in r2 at Nancy] and [LOAD lv in r1 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [LOAD matz in r1 at Nancy]
+		[UNLOAD kacim from r1 at Paris] and [UNLOAD lv from r1 at Nancy]
+		[MOVE r2 from Nancy to Lyon] and [UNLOAD kacim from r2 at Lyon]
+		[UNLOAD kacim from r1 at Paris] and [MOVE r1 from Nancy to Paris]
+		[UNLOAD matz from r2 at Paris] and [NOOP <matz at Nancy>]
+		[NOOP <lv at Nancy>] and [UNLOAD lv from r2 at Paris]
+		[NOOP <r2 at Lyon>] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD matz from r2 at Lyon] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD matz from r2 at Lyon] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD matz from r1 at Nancy] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <r1 has-fuel>] and [UNLOAD kacim from r1 at Lyon]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD lv from r1 at Lyon]
+		[LOAD lv in r1 at Nancy] and [UNLOAD lv from r1 at Paris]
+		[LOAD lv in r2 at Nancy] and [UNLOAD kacim from r2 at Lyon]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r1 at Paris]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r1 at Lyon]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r2 at Lyon]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r2 at Nancy]
+		[NOOP <kacim in r2>] and [UNLOAD kacim from r2 at Lyon]
+		[NOOP <kacim at Nancy>] and [UNLOAD kacim from r2 at Paris]
+		[NOOP <kacim in r1>] and [UNLOAD kacim from r2 at Nancy]
+		[NOOP <r1 at Paris>] and [UNLOAD lv from r1 at Lyon]
+		[LOAD matz in r2 at Nancy] and [UNLOAD kacim from r2 at Paris]
+		[UNLOAD lv from r1 at Nancy] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD kacim from r1 at Paris] and [UNLOAD kacim from r2 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [UNLOAD matz from r1 at Nancy]
+		[LOAD kacim in r2 at Nancy] and [NOOP <kacim at Nancy>]
+		[MOVE r1 from Nancy to Lyon] and [LOAD matz in r1 at Nancy]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD lv from r2 at Nancy]
+		[UNLOAD matz from r1 at Lyon] and [NOOP <r1 at Paris>]
+		[LOAD matz in r2 at Nancy] and [NOOP <r2 at Lyon>]
+		[NOOP <lv in r1>] and [UNLOAD lv from r2 at Paris]
+		[UNLOAD matz from r1 at Lyon] and [UNLOAD matz from r1 at Nancy]
+		[UNLOAD matz from r1 at Paris] and [LOAD matz in r1 at Nancy]
+		[MOVE r1 from Nancy to Paris] and [UNLOAD kacim from r1 at Lyon]
+		[MOVE r2 from Nancy to Paris] and [MOVE r2 from Nancy to Lyon]
+		[UNLOAD matz from r2 at Paris] and [UNLOAD matz from r2 at Nancy]
+		[UNLOAD matz from r2 at Nancy] and [MOVE r2 from Nancy to Paris]
+		[LOAD kacim in r1 at Nancy] and [NOOP <kacim at Nancy>]
+		[LOAD lv in r2 at Nancy] and [UNLOAD lv from r1 at Nancy]
+		[LOAD matz in r2 at Nancy] and [UNLOAD matz from r2 at Paris]
+		[UNLOAD matz from r1 at Paris] and [NOOP <matz at Nancy>]
+		[UNLOAD matz from r1 at Paris] and [UNLOAD matz from r1 at Lyon]
+		[MOVE r1 from Nancy to Paris] and [UNLOAD lv from r1 at Nancy]
+	Layer 3 propositions:
+		<r2 has-fuel>
+		<r1 at Paris>
+		<r1 has-fuel>
+		<r1 at Lyon>
+		<r1 at Nancy>
+		<lv in r2>
+		<lv at Paris>
+		<lv in r1>
+		<lv at Lyon>
+		<lv at Nancy>
+		<kacim in r2>
+		<r2 at Paris>
+		<kacim at Paris>
+		<matz at Paris>
+		<matz in r2>
+		<kacim at Lyon>
+		<kacim in r1>
+		<r2 at Lyon>
+		<r2 at Nancy>
+		<kacim at Nancy>
+		<matz in r1>
+		<matz at Lyon>
+		<matz at Nancy>
+	Layer 3 mutex propositions:
+		<r1 at Nancy> and <r1 at Paris>
+		<lv at Nancy> and <lv in r1>
+		<kacim in r2> and <kacim in r1>
+		<r2 at Paris> and <r2 has-fuel>
+		<r1 at Lyon> and <r1 at Paris>
+		<kacim at Nancy> and <kacim in r2>
+		<matz at Paris> and <matz at Nancy>
+		<matz at Lyon> and <matz in r2>
+		<lv at Nancy> and <lv at Lyon>
+		<matz at Paris> and <matz at Lyon>
+		<lv at Paris> and <lv in r2>
+		<r1 at Lyon> and <r1 has-fuel>
+		<matz in r2> and <matz in r1>
+		<matz at Lyon> and <matz at Nancy>
+		<kacim at Paris> and <kacim in r2>
+		<lv in r2> and <lv in r1>
+		<r2 at Paris> and <r2 at Lyon>
+		<lv at Paris> and <lv at Lyon>
+		<lv at Lyon> and <lv in r1>
+		<r1 at Nancy> and <r1 at Lyon>
+		<lv at Lyon> and <lv in r2>
+		<kacim at Lyon> and <kacim in r2>
+		<kacim at Paris> and <kacim at Lyon>
+		<lv at Paris> and <lv in r1>
+		<kacim at Nancy> and <kacim in r1>
+		<matz in r2> and <matz at Nancy>
+		<matz at Paris> and <matz in r2>
+		<lv at Nancy> and <lv at Paris>
+		<kacim at Paris> and <kacim in r1>
+		<kacim at Paris> and <kacim at Nancy>
+		<matz at Paris> and <matz in r1>
+		<r2 at Lyon> and <r2 has-fuel>
+		<r1 has-fuel> and <r1 at Paris>
+		<matz at Lyon> and <matz in r1>
+		<lv at Nancy> and <lv in r2>
+		<r2 at Paris> and <r2 at Nancy>
+		<matz at Nancy> and <matz in r1>
+		<kacim at Lyon> and <kacim in r1>
+		<kacim at Lyon> and <kacim at Nancy>
+		<r2 at Lyon> and <r2 at Nancy>
+
+################################################################################
+
+##############################################################################################
+### A valid plan might exist from layer 3, we can try to extract the goal from this layer. ###
+##############################################################################################
+
+################################################################################
+
+Trying to extract the following goal from layer 3:
+	<lv at Paris>
+	<matz at Paris>
+	<kacim at Lyon>
+
+		Looking for an action that can provide <lv at Paris> in layer 3
+			Providers for <lv at Paris> in layer 3:
+				[UNLOAD lv from r2 at Paris]
+				[UNLOAD lv from r1 at Paris]
+
+			Trying to add [UNLOAD lv from r2 at Paris] to the plan
+
+			Looking for an action that can provide <matz at Paris> in layer 3
+				Providers for <matz at Paris> in layer 3:
+					[UNLOAD matz from r1 at Paris]
+					[UNLOAD matz from r2 at Paris]
+
+				Trying to add [UNLOAD matz from r1 at Paris] to the plan
+
+				Looking for an action that can provide <kacim at Lyon> in layer 3
+					Providers for <kacim at Lyon> in layer 3:
+						No provider found, choosing another provider for the previous proposition
+
+				Trying to add [UNLOAD matz from r2 at Paris] to the plan
+
+				Looking for an action that can provide <kacim at Lyon> in layer 3
+					Providers for <kacim at Lyon> in layer 3:
+						[UNLOAD kacim from r1 at Lyon]
+
+					Trying to add [UNLOAD kacim from r1 at Lyon] to the plan
+
+################################################################################
+
+Trying to extract the following goal from layer 2:
+	<r2 at Paris>
+	<kacim in r1>
+	<r1 at Lyon>
+	<matz in r2>
+	<lv in r2>
+
+		Looking for an action that can provide <r2 at Paris> in layer 2
+			Providers for <r2 at Paris> in layer 2:
+				[NOOP <r2 at Paris>]
+				[MOVE r2 from Nancy to Paris]
+
+			Trying to add [NOOP <r2 at Paris>] to the plan
+
+			Looking for an action that can provide <lv in r2> in layer 2
+				Providers for <lv in r2> in layer 2:
+					No provider found, choosing another provider for the previous proposition
+
+			Trying to add [MOVE r2 from Nancy to Paris] to the plan
+
+			Looking for an action that can provide <lv in r2> in layer 2
+				Providers for <lv in r2> in layer 2:
+					[NOOP <lv in r2>]
+
+				Trying to add [NOOP <lv in r2>] to the plan
+
+				Looking for an action that can provide <kacim in r1> in layer 2
+					Providers for <kacim in r1> in layer 2:
+						[NOOP <kacim in r1>]
+						[LOAD kacim in r1 at Nancy]
+
+					Trying to add [NOOP <kacim in r1>] to the plan
+
+					Looking for an action that can provide <matz in r2> in layer 2
+						Providers for <matz in r2> in layer 2:
+							[NOOP <matz in r2>]
+
+						Trying to add [NOOP <matz in r2>] to the plan
+
+						Looking for an action that can provide <r1 at Lyon> in layer 2
+							Providers for <r1 at Lyon> in layer 2:
+								[MOVE r1 from Nancy to Lyon]
+
+							Trying to add [MOVE r1 from Nancy to Lyon] to the plan
+
+################################################################################
+
+Trying to extract the following goal from layer 1:
+	<r2 has-fuel>
+	<matz in r2>
+	<r2 at Nancy>
+	<r1 at Nancy>
+	<r1 has-fuel>
+	<lv in r2>
+	<kacim in r1>
+
+		Looking for an action that can provide <r2 has-fuel> in layer 1
+			Providers for <r2 has-fuel> in layer 1:
+				[NOOP <r2 has-fuel>]
+
+			Trying to add [NOOP <r2 has-fuel>] to the plan
+
+			Looking for an action that can provide <matz in r2> in layer 1
+				Providers for <matz in r2> in layer 1:
+					[LOAD matz in r2 at Nancy]
+
+				Trying to add [LOAD matz in r2 at Nancy] to the plan
+
+				Looking for an action that can provide <kacim in r1> in layer 1
+					Providers for <kacim in r1> in layer 1:
+						[LOAD kacim in r1 at Nancy]
+
+					Trying to add [LOAD kacim in r1 at Nancy] to the plan
+
+					Looking for an action that can provide <lv in r2> in layer 1
+						Providers for <lv in r2> in layer 1:
+							[LOAD lv in r2 at Nancy]
+
+						Trying to add [LOAD lv in r2 at Nancy] to the plan
+
+						Looking for an action that can provide <r1 at Nancy> in layer 1
+							Providers for <r1 at Nancy> in layer 1:
+								[NOOP <r1 at Nancy>]
+
+							Trying to add [NOOP <r1 at Nancy>] to the plan
+
+							Looking for an action that can provide <r1 has-fuel> in layer 1
+								Providers for <r1 has-fuel> in layer 1:
+									[NOOP <r1 has-fuel>]
+
+								Trying to add [NOOP <r1 has-fuel>] to the plan
+
+								Looking for an action that can provide <r2 at Nancy> in layer 1
+									Providers for <r2 at Nancy> in layer 1:
+										[NOOP <r2 at Nancy>]
+
+									Trying to add [NOOP <r2 at Nancy>] to the plan
+
+################################################################################
+
+Trying to extract the following goal from layer 0:
+	<r2 has-fuel>
+	<r1 at Nancy>
+	<kacim at Nancy>
+	<lv at Nancy>
+	<r1 has-fuel>
+	<matz at Nancy>
+	<r2 at Nancy>
+
+
+#####################################################################################################################
+### The intermediate goal for layer 0 corresponds to the initial preconditions, the built layered plan is valid ! ###
+######################## We can now concatenate the plans for each layer and end the search. ########################
+#####################################################################################################################
+
+The valid intermediate goal that was extracted from layer 0 is:
+	<r2 has-fuel>
+	<r1 at Nancy>
+	<kacim at Nancy>
+	<lv at Nancy>
+	<r1 has-fuel>
+	<matz at Nancy>
+	<r2 at Nancy>
+
+The valid corresponding plan for layer 1 is:
+	[LOAD matz in r2 at Nancy]
+	[LOAD lv in r2 at Nancy]
+	[NOOP <r2 has-fuel>]
+	[NOOP <r1 has-fuel>]
+	[LOAD kacim in r1 at Nancy]
+	[NOOP <r2 at Nancy>]
+	[NOOP <r1 at Nancy>]
+
+################################################################################
+
+The valid intermediate goal that was extracted from layer 1 is:
+	<r2 has-fuel>
+	<matz in r2>
+	<r2 at Nancy>
+	<r1 at Nancy>
+	<r1 has-fuel>
+	<lv in r2>
+	<kacim in r1>
+
+The valid corresponding plan for layer 2 is:
+	[NOOP <lv in r2>]
+	[MOVE r2 from Nancy to Paris]
+	[NOOP <kacim in r1>]
+	[NOOP <matz in r2>]
+	[MOVE r1 from Nancy to Lyon]
+
+################################################################################
+
+The valid intermediate goal that was extracted from layer 2 is:
+	<r2 at Paris>
+	<kacim in r1>
+	<r1 at Lyon>
+	<matz in r2>
+	<lv in r2>
+
+The valid corresponding plan for layer 3 is:
+	[UNLOAD matz from r2 at Paris]
+	[UNLOAD lv from r2 at Paris]
+	[UNLOAD kacim from r1 at Lyon]
+
+################################################################################
+
+The extracted goal from layer 3 is {<lv at Paris>, <matz at Paris>, <kacim at Lyon>}
+
+##########################################################################################
+### This actually is the global goal. The plans for each layer have been concatenated. ###
+##########################################################################################
+
+We can return the layered plan:
+	[LOAD matz in r2 at Nancy]
+	[LOAD lv in r2 at Nancy]
+	[LOAD kacim in r1 at Nancy]
+	[MOVE r2 from Nancy to Paris]
+	[MOVE r1 from Nancy to Lyon]
+	[UNLOAD matz from r2 at Paris]
+	[UNLOAD lv from r2 at Paris]
+	[UNLOAD kacim from r1 at Lyon]

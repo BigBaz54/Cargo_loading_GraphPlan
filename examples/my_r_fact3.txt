@@ -1,0 +1,24 @@
+
+(Nancy PLACE)
+(Paris PLACE)
+(Lyon PLACE)
+(r1 ROCKET)
+(r2 ROCKET)
+(lv CARGO)
+(kacim CARGO)
+(matz CARGO)
+
+(preconds
+(at r1 Nancy)
+(at r2 Nancy)
+(at lv Nancy)
+(at kacim Nancy)
+(at matz Nancy)
+(has-fuel r1)
+(has-fuel r2))
+
+(effects
+(at lv Paris) 
+(at kacim Lyon)
+(at matz Paris))
+

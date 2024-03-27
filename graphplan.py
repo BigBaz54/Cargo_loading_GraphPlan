@@ -168,7 +168,7 @@ class GraphPlan:
             self.expand()
         self.trace += '##############################################################################################\n'
         self.trace += f'### A valid plan might exist from layer {i}, we can try to extract the goal from this layer. ###\n'
-        self.trace += '##############################################################################################\n'
+        self.trace += '##############################################################################################\n\n'
         if self.continue_search(goal):
             # We stopped expanding the graph because we reached the fixed point and the goal is not yet achieved
             return None
@@ -332,7 +332,7 @@ class GraphPlan:
 
 
 if __name__ == "__main__":
-    r_fact = 'examples/my_r_fact3.txt'
+    r_fact = 'examples/my_r_fact9.txt'
     gp = GraphPlan(r_fact)
     layered_plan = gp.graphplan()
     gp.write_trace()
