@@ -1,5 +1,5 @@
 # Rocket_GraphPlan
-This is a Python implementation of the GraphPlan algorithm for planning. 
+This is a Python implementation of the GraphPlan algorithm.
 
 The domain used is the Rocket domain with the 'has-fuel' proposition.
 
